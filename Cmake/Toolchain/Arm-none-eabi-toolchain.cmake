@@ -14,7 +14,6 @@ set(CMAKE_OBJCOPY       "${TOOLCHAIN_PREFIX}objcopy")
 set(CMAKE_RANLIB        "${TOOLCHAIN_PREFIX}ranlib")
 set(CMAKE_SIZE          "${TOOLCHAIN_PREFIX}size")
 set(CMAKE_STRIP         "${TOOLCHAIN_PREFIX}ld")
-set(CMAKE_GDB           "${TOOLCHAIN_PREFIX}gdb")
 
 # set(PROJECT_TYPE_EXECUTABLE       "exe")
 # set(PROJECT_TYPE_STATIC_LIBRARY   "static-lib")

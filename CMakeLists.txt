@@ -9,6 +9,7 @@ include(FetchContent)
 include(CPack)
 include(Cmake/Opts/CustomOpts.cmake)
 include(Cmake/Utils/pre-commit.cmake)
+include(Cmake/Utils/vscode-config.cmake)
 
 add_subdirectory(chip)
 add_subdirectory(lib)
