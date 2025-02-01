@@ -26,7 +26,7 @@ target_link_libraries(
 
 FetchContent_Declare(freertos_kernel
     GIT_REPOSITORY https://github.com/FreeRTOS/FreeRTOS-Kernel.git
-    GIT_TAG main 
+    GIT_TAG main
 )
 
 FetchContent_MakeAvailable(freertos_kernel)
