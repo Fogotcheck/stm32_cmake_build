@@ -19,7 +19,8 @@ function(target_post_build TargetName)
 endfunction(target_post_build TargetName)
 
 function(target_install_binary TargetName)
-    add_custom_target(Install${TargetName}
+    add_custom_target(
+        OPTS_${TargetName}_CPACK
         COMMAND CPack -G ZIP
         DEPENDS ${PROJECT_NAME}
         COMMENT "Installing ${PROJECT_NAME}"
