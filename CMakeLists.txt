@@ -11,8 +11,8 @@ include(Cmake/Opts/CustomOpts.cmake)
 include(Cmake/Utils/pre-commit.cmake)
 include(Cmake/Utils/vscode-config.cmake)
 
-add_subdirectory(chip)
-add_subdirectory(lib)
+add_subdirectory(Chip)
+add_subdirectory(Lib)
 add_subdirectory(AppMain)
 
 target_install_binary(${PROJECT_NAME})
