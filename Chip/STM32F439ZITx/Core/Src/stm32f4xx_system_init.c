@@ -17,7 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "stm32_system_init.h"
+#include "stm32f4xx_system_init.h"
 #include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
