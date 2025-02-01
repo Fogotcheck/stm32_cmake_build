@@ -21,7 +21,7 @@ target_sources(
 target_link_libraries(
     freertos_config
     INTERFACE
-    STM32F439ZITx_HAL
+    ${PROJECT_NAME}_CHIP_INTERFACE
 )
 
 FetchContent_Declare(freertos_kernel
