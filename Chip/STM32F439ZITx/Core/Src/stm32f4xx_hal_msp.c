@@ -19,7 +19,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include "cube_init.h"
+#include "stm32_system_init.h"
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */

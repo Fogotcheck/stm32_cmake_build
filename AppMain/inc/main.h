@@ -1,6 +1,6 @@
 #pragma once
 
-#include "cube_init.h"
+#include "stm32_system_init.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "event_groups.h"
