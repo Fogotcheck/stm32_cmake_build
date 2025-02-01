@@ -6,7 +6,7 @@ set(MCPU "-mcpu=cortex-m4" CACHE STRING "" FORCE)
 set(MFPU "-mfpu=fpv4-sp-d16" CACHE STRING "" FORCE)
 set(MFLOAT_ABI "-mfloat-abi=hard" CACHE STRING "" FORCE)
 set(MCU_DEVICE "STM32F439xx" CACHE STRING "" FORCE)
-set(MCU_LINCER_SCRIPT
+set(MCU_DEFAULT_LINKER_SCRIPT
     "${CMAKE_CURRENT_SOURCE_DIR}/STM32F439ZITX_FLASH.ld"
     CACHE STRING "" FORCE
 )
@@ -19,7 +19,6 @@ target_compile_options(
     ${MCPU}
     ${MFPU}
     ${MFLOAT_ABI}
-    -T${MCU_LINCER_SCRIPT}
 )
 
 target_link_options(
@@ -28,7 +27,6 @@ target_link_options(
     ${MCPU}
     ${MFPU}
     ${MFLOAT_ABI}
-    -T${MCU_LINCER_SCRIPT}
 )
 
 target_compile_definitions(
