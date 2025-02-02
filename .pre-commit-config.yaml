@@ -26,5 +26,5 @@ repos:
 exclude: |
     (?x)^(
         Chip/STM32F439ZITx/.*|
-        lib/FreeRTOS/.*
+        Lib/FreeRTOS/.*
     )$
