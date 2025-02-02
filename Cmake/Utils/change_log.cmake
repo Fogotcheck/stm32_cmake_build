@@ -5,6 +5,9 @@ find_file(CHANGELOG_FILE CHANGELOG.md ${CMAKE_SOURCE_DIR})
 if(NOT CHANGELOG_FILE)
     message(WARNING "Could not find CHANGELOG.md file in PATH::${CMAKE_SOURCE_DIR}")
 else()
+    get_filename_component(CXX_COMPILER_NAME ${CMAKE_CXX_COMPILER} NAME)
+    get_filename_component(C_COMPILER_NAME ${CMAKE_C_COMPILER} NAME)
+
     execute_process(
         COMMAND git rev-parse HEAD
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
