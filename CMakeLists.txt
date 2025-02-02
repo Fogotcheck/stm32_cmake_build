@@ -7,7 +7,7 @@ set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
 
 include(FetchContent)
 include(CPack)
-include(Cmake/Opts/CustomOpts.cmake)
+include(Cmake/Opts/Custom_build_opts.cmake)
 include(Cmake/Utils/pre-commit.cmake)
 include(Cmake/Utils/vscode-config.cmake)
 
