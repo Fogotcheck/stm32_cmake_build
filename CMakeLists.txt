@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(BuildTest VERSION 0.2.3 LANGUAGES CXX C ASM)
+project(BuildTest VERSION 0.2.0 LANGUAGES CXX C ASM)
 
 set(CPACK_PACKAGE_CHECKSUM MD5)
 set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
@@ -10,6 +10,7 @@ include(CPack)
 include(Cmake/Opts/Custom_build_opts.cmake)
 include(Cmake/Utils/pre-commit.cmake)
 include(Cmake/Utils/vscode-config.cmake)
+include(Cmake/Utils/change_log.cmake)
 
 add_subdirectory(Chip)
 add_subdirectory(Lib)
