@@ -1,14 +1,20 @@
 cmake_minimum_required(VERSION 3.22)
 
-execute_process(
-    COMMAND git rev-parse HEAD
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_REV_PARSE
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
+find_file(CHANGELOG_FILE CHANGELOG.md ${CMAKE_SOURCE_DIR})
 
-string(TIMESTAMP TODAY "%Y_%m_%d %H:%M")
-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/CHANGELOG.md"
-    "${CMAKE_BINARY_DIR}/CHANGELOG.md")
+if(NOT CHANGELOG_FILE)
+    message(WARNING "Could not find CHANGELOG.md file in PATH::${CMAKE_SOURCE_DIR}")
+else()
+    execute_process(
+        COMMAND git rev-parse HEAD
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        OUTPUT_VARIABLE GIT_REV_PARSE
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+    )
 
-install(FILES ${CMAKE_BINARY_DIR}/CHANGELOG.md DESTINATION .)
+    string(TIMESTAMP TODAY "%Y_%m_%d %H:%M")
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/CHANGELOG.md"
+        "${CMAKE_BINARY_DIR}/CHANGELOG.md")
+
+    install(FILES ${CMAKE_BINARY_DIR}/CHANGELOG.md DESTINATION .)
+endif()
