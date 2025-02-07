@@ -51,16 +51,18 @@ file(GLOB_RECURSE ${MODULE_NAME}_HAL_SRC
     Drivers/STM32F4xx_HAL_Driver/Src/*.c
 )
 
-file(GLOB_RECURSE ${MODULE_NAME}_SYSTEM_SRC
-    Core/Src/*.c
-)
+function(target_add_core_source TARGET_NAME)
+    file(GLOB_RECURSE STM32F439ZITx_HAL_SYSTEM_SRC
+        ${CMAKE_SOURCE_DIR}/Chip/STM32F439ZITx/Core/Src/*.c
+    )
 
-target_sources(
-    ${MODULE_NAME}_INTERFACE
-    INTERFACE
-    ${${MODULE_NAME}_SYSTEM_SRC}
-    Core/Startup/startup_stm32f439zitx.s
-)
+    target_sources(
+        ${TARGET_NAME}
+        PRIVATE
+        ${STM32F439ZITx_HAL_SYSTEM_SRC}
+        ${CMAKE_SOURCE_DIR}/Chip/STM32F439ZITx/Core/Startup/startup_stm32f439zitx.s
+    )
+endfunction(target_add_core_source TARGET_NAME)
 
 add_library(
     ${MODULE_NAME}

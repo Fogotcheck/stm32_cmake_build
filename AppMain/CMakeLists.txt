@@ -13,6 +13,8 @@ target_include_directories(
     inc
 )
 
+target_add_core_source(${MODULE_NAME})
+
 target_link_libraries(
     ${MODULE_NAME}
     ${PROJECT_NAME}_CHIP_INTERFACE
