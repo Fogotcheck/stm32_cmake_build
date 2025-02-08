@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.22)
+
+set(${PROJECT_NAME}_LOGGER_PORT_BASE_CLASS ${CMAKE_CURRENT_SOURCE_DIR}/LoggerPort CACHE STRING "" FORCE)
+
+add_library(${PROJECT_NAME}_LOGGER_PORT_INTERFACE INTERFACE)
+
+add_subdirectory(usart)
+
+target_link_libraries(
+    ${PROJECT_NAME}_LOGGER_PORT_INTERFACE
+    INTERFACE
+    ${PROJECT_NAME}_USART
+)

@@ -1,4 +1,6 @@
 #include "main.h"
+#include "usart.h"
+#include "Logger.h"
 
 void MainThr(__attribute__((unused)) void *arg);
 
@@ -18,6 +20,10 @@ void MainThr(__attribute__((unused)) void *arg)
 	if (osKernelInitialize()) {
 		Error_Handler();
 	}
+
+	LoggerPortUsart loggerPort_usart;
+
+	Logger log(&loggerPort_usart);
 	while (1) {
 		HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 		vTaskDelay(1000);
