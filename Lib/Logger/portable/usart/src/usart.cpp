@@ -15,7 +15,7 @@ LoggerPortUsart::~LoggerPortUsart()
 
 int32_t LoggerPortUsart::write(const uint8_t *Data, uint16_t Size)
 {
-	return HAL_UART_Transmit_DMA(LogUart, Data, Size);
+	return HAL_UART_Transmit(LogUart, Data, Size, 100);
 }
 
 int32_t LoggerPortUsart::read(uint8_t *Data, uint16_t Size)
