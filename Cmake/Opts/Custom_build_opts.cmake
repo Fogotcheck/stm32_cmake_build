@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-find_program(CMAKE_SIZE ${TOOLCHAIN_PREFIX}size PATHS ${TOOLCHAIN_PATH})
+find_program(CMAKE_SIZE ${TOOLCHAIN_PREFIX}size HINTS ${TOOLCHAIN_PATH})
 
 function(target_post_build TargetName)
     add_custom_command(
@@ -9,8 +9,18 @@ function(target_post_build TargetName)
         COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${TargetName}> ${CMAKE_BINARY_DIR}/${TargetName}.hex
         COMMAND ${CMAKE_OBJDUMP} -S $<TARGET_FILE:${TargetName}> > ${CMAKE_BINARY_DIR}/${TargetName}.S
         COMMAND ${CMAKE_NM} -a -l -S -s $<TARGET_FILE:${TargetName}> > ${CMAKE_BINARY_DIR}/${TargetName}_sort.map
-        COMMAND ${CMAKE_SIZE} -A $<TARGET_FILE:${TargetName}>
-        COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${TargetName}>
+    )
+
+    if(CMAKE_SIZE)
+        add_custom_command(
+            TARGET ${TargetName} POST_BUILD
+            COMMAND ${CMAKE_SIZE} -A $<TARGET_FILE:${TargetName}>
+            COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${TargetName}>
+        )
+    endif()
+
+    add_custom_command(
+        TARGET ${TargetName} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E echo "Build - success"
         COMMAND ${CMAKE_COMMAND} -E echo "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}"
     )

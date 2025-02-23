@@ -7,6 +7,8 @@ add_executable(
     src/main.cpp
 )
 
+target_add_core_source(${MODULE_NAME})
+
 target_include_directories(
     ${MODULE_NAME}
     PRIVATE
