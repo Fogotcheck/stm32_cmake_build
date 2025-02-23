@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 
 find_program(OPENOCD_EXE openocd)
-find_program(CMAKE_GDB ${TOOLCHAIN_PREFIX}gdb)
+find_program(CMAKE_GDB ${TOOLCHAIN_PREFIX}gdb HINTS ${TOOLCHAIN_PATH})
 
 set(MODULE_NAME UTILS_${PROJECT_NAME})
 set(CONFIGURE_INPUT_FILES_PATH
