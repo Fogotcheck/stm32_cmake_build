@@ -38,8 +38,7 @@ extern int __io_getchar(void) __attribute__((weak));
 
 char *__env[1] = { 0 };
 char **environ = __env;
-
-static uint32_t seed = 0x12345678; // Начальное значение
+static uint32_t seed = 0x12345678; 
 
 /* Functions */
 void initialise_monitor_handles()
@@ -180,24 +179,22 @@ void seed_random(uint32_t new_seed) {
   seed = new_seed;
 }
 
-// Псевдослучайная функция
-static uint32_t pseudo_random() {
+static inline uint32_t pseudo_random() {
   seed ^= (seed << 13);
   seed ^= (seed >> 17);
   seed ^= (seed << 5);
   return seed;
 }
 
-int _getentropy(void *buffer, size_t length) {
+__attribute__((weak)) int _getentropy(void *buffer, size_t length) {
   if (length == 0 || buffer == NULL) {
-      return -1; // Ошибка
+      return -1; 
   }
 
-  // Заполните буфер случайными данными
   uint8_t *ptr = (uint8_t *)buffer;
   for (size_t i = 0; i < length; i++) {
       ptr[i] = (uint8_t)(pseudo_random() & 0xFF);
   }
   
-  return 0; // Успех
+  return 0; 
 }

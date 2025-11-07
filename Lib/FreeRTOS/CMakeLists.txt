@@ -5,6 +5,16 @@ set(FREERTOS_PORT "GCC_ARM_CM4F" CACHE STRING "" FORCE)
 
 add_library(freertos_config INTERFACE)
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(
+        freertos_config
+        INTERFACE
+        "configRECORD_STACK_HIGH_ADDRESS=1"
+        # "configGENERATE_RUN_TIME_STATS=1"
+        # "configUSE_TRACE_FACILITY=1"
+    )
+endif()
+
 target_include_directories(
     freertos_config
     SYSTEM INTERFACE
